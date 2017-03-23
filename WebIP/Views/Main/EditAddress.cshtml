@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "EditAddress";
+}
+
+<h2>EditAddress</h2>
+
+<form method="POST" action="/Main/UpdateAddress/">
+    
+    <input type="hidden" name="Address" value="@ViewBag.Add" />
+    <input type="hidden" name="Network" value="@ViewBag.Net"/>
+    <label>Введіть клієнта</label>
+    <input type="text" name="Name" value="@ViewBag.Client"/></br>
+    <label>Введіть додаткову інформацію</label>
+    <input type="text" name="Information" value="@ViewBag.Information"/></br>
+    <input type="submit" value="Отправить" />
+</form>
+

@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    <h3>Вивід ІР-адрес</h3>
+    <table border="1">
+        <tr>
+            <td><p>№</p></td>
+            <td><p>Ір адреса</p></td>
+            <td><p>Клієнт</p></td>
+            <td><p>Примітки</p></td>
+        </tr>
+        @for (int count = 1; count < 256; count++)
+        {
+            string network = ViewBag.Net;
+            int address = count;
+            string name = String.Empty;
+            string information = String.Empty;
+            int row = 0;
+
+            foreach (var b in ViewBag.IP)
+            {
+                if (network == b.Network && count == b.Address && row == 0)
+                {
+                    name = b.Name;
+                    information = b.Information;
+                    row++;
+                }
+            }
+
+            if (row == 1)
+            {
+                <tr>
+                    <td>
+                        <p>@count</p></td>
+                    <td>
+                        <p>@network.@address</p></td>
+                    <td>
+                        <p>@name</p></td>
+                    <td>
+                        <p>@information</p></td>
+                    <td>
+                        <a href="/Main/EditAddress/?net=@network&add=@count&client=@name&&information=@information">Редагувати</a>
+                    </td>
+                    <td>
+                        <a href="/Main/AddAddresss/?net=@network&add=@count&client=@name&&information=@information">Добавити адресу</a>
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>
+                        <p>@count</p>
+                    </td>
+                    <td>
+                        <p>@network.@address</p>
+                    </td>
+                    <td>
+                        <p></p>
+                    </td>
+                    <td>
+                        <p></p>
+                    </td>
+                    <td>
+                        <a href="/Main/EditAddress/?net=@network&add=@count&client=@name&information=@information">Редагувати</a>
+                    </td>
+                    <td>
+                        <a href="/Main/AddAddresss/?net=@network&add=@count&client=@name&&information=@information">Добавити адресу</a>
+                    </td>
+                </tr>
+            }
+        }
+
+        
+    </table>
+</div>

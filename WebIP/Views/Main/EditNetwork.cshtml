@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "EditNetwork";
+}
+
+<h2>EditNetwork</h2>
+
+<table border="1">
+    <tr>
+        <td>
+            <p>№</p>
+        </td>
+        <td>
+            <p>IP-адреса</p>
+        </td>
+        <td>
+            <p>Клієнт</p>
+        </td>
+        <td>
+            <p>Примітки</p>
+        </td>
+    </tr>
+    @{
+        int count = 1;
+        try
+        {
+            <tr>
+                <td>
+                    <p>@count</p>
+                </td>
+                <td>
+                    <p>@ViewBag.Net@count</p>
+                </td>
+                <td>
+                    @foreach (var add in ViewBag.Addreses)
+                    {
+                        if (add.Address == count)
+                        {
+                            <p>@add.Name</p>
+                        }
+                        else
+                        {
+                            <p></p>
+                        }
+                    }
+
+                </td>
+                <td>
+                    @foreach (var add in ViewBag.Addreses)
+                    {
+                        if (add.Address == count)
+                        {
+                            <p>@add.Information</p>
+                        }
+                        else
+                        {
+                            <p></p>
+                        }
+                    }
+
+                </td>
+                <td>
+                    <p>
+                        <a href="/Main/EditNetwork/">Редагувати</a>
+                    </p>
+                </td>
+            </tr>
+            count++;
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
+
+</table>

@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "EnterNetwork";
+}
+
+<h2>EnterNetwork</h2>
+<a href="/Main/AddNetwork/">Добавити мережу</a>
+<table border="1">
+    <tr>
+        <td>
+            <p>№</p></td>
+        <td>
+            <p>Мережа</p></td>
+        <td>
+            <p>Принадлежність</p></td>
+    </tr>
+    @{
+        int count = 1;
+        try
+        {
+            foreach (var b in ViewBag.Net)
+            {
+                <tr>
+                    <td>
+                        <p>@count</p>
+                    </td>
+                    <td>
+                        <p>@b.Network</p>
+                    </td>
+                    <td>
+                        <p>@b.Name</p>
+                    </td>
+                    <td>
+                        <p>
+                            <a href="/Main/ViewIP/?net=@b.Network">Перейти</a>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <a href="">Редагувати</a>
+                        </p>
+                    </td>
+                </tr>
+                count++;
+            }
+        }
+        catch (Exception ex)
+        {
+            
+        }
+    }
+
+</table>
+
